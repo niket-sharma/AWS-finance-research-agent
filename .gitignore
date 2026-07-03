@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# CDK
+infra/cdk.out/
+infra/cdk.out2/
+
+# Lambda layer (built locally, not committed)
+layer/python/
+
+# AWS credentials / secrets
+.env
+*.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

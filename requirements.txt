@@ -1,0 +1,11 @@
+boto3>=1.38
+pydantic>=2.6
+requests>=2.32
+numpy>=1.26
+yfinance>=0.2
+strands-agents>=1.40
+bedrock-agentcore>=1.10
+bedrock-agentcore-starter-toolkit>=0.3
+aws-cdk-lib>=2.250
+constructs>=10.3
+tenacity>=9.0

@@ -1,0 +1,7 @@
+line-length = 100
+target-version = "py312"
+exclude = [".venv", "infra/cdk.out", "layer"]
+
+[lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]

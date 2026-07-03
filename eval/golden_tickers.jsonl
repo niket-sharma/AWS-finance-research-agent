@@ -1,0 +1,5 @@
+{"ticker": "AAPL", "criteria": ["risk_rating_consistent_with_metrics", "every_fundamental_claim_sourced", "no_execution_language", "regime_label_valid"]}
+{"ticker": "MSFT", "criteria": ["risk_rating_consistent_with_metrics", "every_fundamental_claim_sourced", "no_execution_language", "regime_label_valid"]}
+{"ticker": "NVDA", "criteria": ["risk_rating_consistent_with_metrics", "every_fundamental_claim_sourced", "no_execution_language", "regime_label_valid"]}
+{"ticker": "JPM", "criteria": ["risk_rating_consistent_with_metrics", "every_fundamental_claim_sourced", "no_execution_language", "regime_label_valid"]}
+{"ticker": "SPY", "criteria": ["risk_rating_consistent_with_metrics", "no_execution_language", "regime_label_valid"]}
