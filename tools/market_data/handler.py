@@ -6,7 +6,7 @@ by changing the backend without touching the agent or risk tools.
 
 Lambda entry point: lambda_handler(event, context).
 """
-
+#Test deployment: aws lambda invoke --function-name market_data --payload '{"ticker": "AAPL"}' response.json
 from __future__ import annotations
 
 import json

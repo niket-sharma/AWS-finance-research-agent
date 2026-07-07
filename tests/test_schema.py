@@ -107,6 +107,16 @@ def test_fundamentals_nullable_fields():
     assert f.sources == []
 
 
+def test_fundamentals_numbers_without_sources_rejected():
+    with pytest.raises(ValidationError):
+        Fundamentals(revenue_ttm=394_000_000_000, sources=[])
+
+
+def test_fundamentals_numbers_with_sources_ok():
+    f = Fundamentals(revenue_ttm=394_000_000_000, sources=["0000320193-24-000006"])
+    assert f.revenue_ttm == 394_000_000_000
+
+
 def test_research_note_serialization():
     note = ResearchNote.model_validate(_valid_note())
     data = note.model_dump(mode="json")

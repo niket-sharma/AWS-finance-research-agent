@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class Snapshot(BaseModel):
@@ -20,6 +20,16 @@ class Fundamentals(BaseModel):
     yoy_revenue_growth: float | None = None
     key_points: list[str] = Field(default_factory=list)
     sources: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _numbers_require_sources(self) -> Fundamentals:
+        has_numbers = any(
+            v is not None
+            for v in (self.revenue_ttm, self.net_income_ttm, self.gross_margin, self.yoy_revenue_growth)
+        )
+        if has_numbers and not self.sources:
+            raise ValueError("Fundamentals with populated numbers must have at least one source")
+        return self
 
 
 class NewsSentiment(BaseModel):

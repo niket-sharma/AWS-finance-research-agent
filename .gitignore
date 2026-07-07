@@ -28,3 +28,6 @@ layer/python/
 # OS
 .DS_Store
 Thumbs.db
+Agentcore-financial-research-spec.md
+aws-bedrock-agentcore-setup-guide.md
+progress.md

@@ -12,5 +12,5 @@
 
 ```bash
 cd infra
-cdk destroy ResearchDeskPhase0 --force
+cdk destroy ResearchDeskPhase1 ResearchDeskPhase0 --force
 ```

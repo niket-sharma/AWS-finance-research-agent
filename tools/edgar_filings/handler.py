@@ -28,6 +28,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 EDGAR_BASE = "https://data.sec.gov"
+EDGAR_WWW_BASE = "https://www.sec.gov"
 USER_AGENT = "research-desk/0.1 sharma.niket@gmail.com"
 _CIK_CACHE: dict[str, str] = {}
 
@@ -43,7 +44,7 @@ def _resolve_cik(ticker: str) -> str | None:
     """Return zero-padded 10-digit CIK for ticker, or None if not found."""
     if ticker in _CIK_CACHE:
         return _CIK_CACHE[ticker]
-    data = _get(f"{EDGAR_BASE}/files/company_tickers.json")
+    data = _get(f"{EDGAR_WWW_BASE}/files/company_tickers.json")
     for entry in data.values():
         if entry.get("ticker", "").upper() == ticker.upper():
             cik = str(entry["cik_str"]).zfill(10)
@@ -88,9 +89,10 @@ def get_filings(ticker: str, form_types: list[str] | None = None, limit: int = 5
     for form, filed, accession, doc in zip(forms, dates, accessions, docs):
         if form in form_types:
             acc_no_dashes = accession.replace("-", "")
+            cik_no_zeros = str(int(cik))
             url = (
-                f"https://www.sec.gov/Archives/edgar/full-index/"
-                f"{filed[:4]}/{filed[5:7]}/{acc_no_dashes}/{doc}"
+                f"https://www.sec.gov/Archives/edgar/data/"
+                f"{cik_no_zeros}/{acc_no_dashes}/{doc}"
                 if doc
                 else f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={cik}&type={form}"
             )
